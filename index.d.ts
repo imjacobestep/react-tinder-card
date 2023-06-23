@@ -84,6 +84,46 @@ declare interface Props {
    * The children passed in is what will be rendered as the actual Tinder-style card.
    */
   children?: React.ReactNode
+
+  /**
+   * Friction of the spring animation when animating out
+   */
+  frictionOut?: number
+
+  /**
+   * Tension of the spring animation when animating out
+   */
+  tensionOut?: number
+
+ /**
+   * Friction of the spring animation when animating back
+   */
+  frictionBack?: number
+
+  /**
+   * Tension of the spring animation when animating back
+   */
+  tensionBack?: number
+
+   /**
+   * Friction of the spring animation when animating on touch
+   */
+  frictionResponsive?: number
+
+  /**
+   * Tension of the spring animation when animating on touch
+   */
+  tensionResponsive?: number
+  
+  /**
+   * Maximum card tilt when dragging
+   */
+  maxTilt?: number
+
+  /**
+   * Rotation power of the card while dragging
+   */
+  rotationPower?: number
 }
 
 declare const TinderCard: React.FC<Props>
