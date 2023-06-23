@@ -85,7 +85,7 @@ const AnimatedDiv = animated.div
 
 const TinderCard = React.forwardRef(
   (
-    { flickOnSwipe = true, children, onSwipe, onCardLeftScreen, className, preventSwipe = [], swipeRequirementType = 'velocity', swipeThreshold = settings.swipeThreshold, onSwipeRequirementFulfilled, onSwipeRequirementUnfulfilled },
+    { flickOnSwipe = true, children, onSwipe, onCardLeftScreen, className, preventSwipe = [], swipeRequirementType = 'velocity', swipeThreshold = settings.swipeThreshold, onSwipeRequirementFulfilled, onSwipeRequirementUnfulfilled, maxTilt = settings.maxTilt, rotationPower = settings.rotationPower, frictionOut = physics.animateOut.friction, tensionOut = physics.animateOut.tension, frictionBack = physics.animateBack.friction, tensionBack = physics.animateBack.tension, frictionResponsive = physics.touchResponsive.friction, tensionResponsive = physics.touchResponsive.tension },
     ref
   ) => {
     const [{ xyrot }, setSpringTarget] = useSpring(() => ({
@@ -94,6 +94,21 @@ const TinderCard = React.forwardRef(
     }))
 
     settings.swipeThreshold = swipeThreshold
+
+    physics = {
+  touchResponsive: {
+    friction: frictionResponsive,
+    tension: tensionResponsive
+  },
+  animateOut: {
+    friction: frictionOut,
+    tension: tensionOut
+  },
+  animateBack: {
+    friction: frictionBack,
+    tension: tensionBack
+  }
+}    
 
     React.useImperativeHandle(ref, () => ({
       async swipe (dir = 'right') {
